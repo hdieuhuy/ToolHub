@@ -1,5 +1,10 @@
 const categories=['Tất cả công cụ','Lập trình','Văn bản','Bảo mật','Thiết kế','Mạng','Tài chính','Hằng ngày','Marketing'];
 const tools=[
+{id:'schema',name:'JSON Schema Validator',desc:'Kiểm tra JSON theo schema, chỉ rõ đường dẫn và nguyên nhân lỗi.',cat:'Lập trình',icon:'✓{}',tone:'#547a59',tint:'#edf4e9'},
+{id:'sql',name:'SQL Formatter',desc:'Định dạng SQL theo hệ cơ sở dữ liệu, từ khóa và kiểu thụt lề.',cat:'Lập trình',icon:'SQL',tone:'#56878e',tint:'#e8f2f3'},
+{id:'urlinspect',name:'Phân tích URL',desc:'Xem protocol, host, port, path, fragment và từng tham số query.',cat:'Mạng',icon:'://',tone:'#7f8e54',tint:'#f0f3e5'},
+{id:'subnet',name:'Subnet Calculator IPv4',desc:'Tính mạng CIDR, subnet mask, broadcast và dải địa chỉ host.',cat:'Mạng',icon:'/24',tone:'#a68b56',tint:'#f7f0e1'},
+{id:'urlextract',name:'Trích xuất URL',desc:'Lấy URL từ văn bản, lọc trùng và loại tham số theo dõi.',cat:'Văn bản',icon:'↗',tone:'#56878e',tint:'#e8f2f3'},
 {id:'pomodoro',name:'Pomodoro',desc:'Chia phiên tập trung, nghỉ ngắn và nghỉ dài với thời lượng tùy chỉnh.',cat:'Hằng ngày',icon:'◴',tone:'#a68b56',tint:'#f7f0e1'},
 {id:'countdown',name:'Đồng hồ đếm ngược',desc:'Đặt thời lượng hoặc ngày giờ đích, tạm dừng và nhận âm báo.',cat:'Hằng ngày',icon:'◷',tone:'#56878e',tint:'#e8f2f3'},
 {id:'robots',name:'Tạo robots.txt',desc:'Tạo quy tắc thu thập dữ liệu cho bot, đường dẫn và sitemap.',cat:'Marketing',icon:'BOT',tone:'#547a59',tint:'#edf4e9'},
