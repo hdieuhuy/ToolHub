@@ -1,0 +1,6 @@
+QR Code libraries bundled locally:
+qrcode-generator 2.0.4 — Kazuhiko Arase — MIT
+https://github.com/kazuhikoarase/qrcode-generator
+jsQR 1.4.0 — Cosmo Wolfe — Apache-2.0
+https://github.com/cozmo/jsQR
+See the accompanying LICENSE files for full license text.
