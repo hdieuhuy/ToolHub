@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "cron-parser": "5.10.2",
+    "dompurify": "3.4.17",
+    "js-yaml": "5.5.0",
+    "marked": "18.1.1"
+  },
+  "name": "toolhub",
+  "private": true,
+  "scripts": {
+    "build:next": "node scripts/build-next.cjs",
+    "test": "node --test tests/*.test.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

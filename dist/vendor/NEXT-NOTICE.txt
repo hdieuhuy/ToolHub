@@ -1,0 +1,6 @@
+Browser libraries bundled locally in next-core.js and purify.min.js.
+js-yaml 5.5.0 — MIT
+marked 18.1.1 — MIT
+dompurify 3.4.17 — (MPL-2.0 OR Apache-2.0)
+cron-parser 5.10.2 — MIT
+luxon 3.7.2 — MIT

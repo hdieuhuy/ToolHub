@@ -1,5 +1,10 @@
 const categories=['Tất cả công cụ','Lập trình','Văn bản','Bảo mật','Thiết kế','Mạng','Tài chính','Hằng ngày','Marketing'];
 const tools=[
+{id:'yaml',name:'JSON ↔ YAML',desc:'Chuyển file cấu hình JSON và YAML, kiểm tra lỗi và tải kết quả.',cat:'Lập trình',icon:'YML',tone:'#547a59',tint:'#edf4e9'},
+{id:'cron',name:'Cron Builder',desc:'Tạo lịch cron 5 trường, chọn múi giờ và xem các lần chạy tiếp theo.',cat:'Lập trình',icon:'◷',tone:'#56878e',tint:'#e8f2f3'},
+{id:'markdown',name:'Markdown Editor',desc:'Soạn Markdown, xem trước trực tiếp và xuất HTML hoặc Markdown.',cat:'Văn bản',icon:'M↓',tone:'#7f8e54',tint:'#f0f3e5'},
+{id:'contrast',name:'Contrast Checker',desc:'Kiểm tra độ tương phản màu chữ và nền theo WCAG AA / AAA.',cat:'Thiết kế',icon:'◐',tone:'#a68b56',tint:'#f7f0e1'},
+{id:'cssgen',name:'CSS Generator',desc:'Tạo gradient, box shadow và border radius có xem trước trực tiếp.',cat:'Thiết kế',icon:'CSS',tone:'#56878e',tint:'#e8f2f3'},
 {id:'diff',name:'So sánh văn bản / JSON',desc:'Tìm dòng thêm, xóa và so sánh JSON bỏ qua thứ tự khóa.',cat:'Lập trình',icon:'±',tone:'#56878e',tint:'#e8f2f3'},
 {id:'csv',name:'CSV ↔ JSON',desc:'Đổi dữ liệu bảng, chọn dấu phân cách và mở file tại máy.',cat:'Lập trình',icon:'CSV',tone:'#547a59',tint:'#edf4e9'},
 {id:'regex',name:'Regex Tester',desc:'Thử biểu thức, đánh dấu phần khớp và xem nhóm bắt.',cat:'Lập trình',icon:'.*',tone:'#a68b56',tint:'#f7f0e1'},
