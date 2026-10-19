@@ -13,5 +13,13 @@
   function convertBase(text,from,to){from=integer(from,2,36,'Hệ số đầu vào');to=integer(to,2,36,'Hệ số kết quả');let s=text.trim().toLowerCase(),negative=s.startsWith('-');if(negative)s=s.slice(1);if(!s)throw Error('Nhập một số nguyên cần chuyển đổi.');let n=0n;for(const c of s){const d='0123456789abcdefghijklmnopqrstuvwxyz'.indexOf(c);if(d<0||d>=from)throw Error(`Ký tự “${c}” không thuộc hệ ${from}. Nhập số nguyên, không kèm tiền tố 0x hoặc 0b.`);n=n*BigInt(from)+BigInt(d);}return(negative&&n!==0n?'-':'')+n.toString(to).toUpperCase();}
   function htmlEncode(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
   function extractEmails(s){return [...new Set((s.match(/[A-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?(?:\.[A-Z0-9](?:[A-Z0-9-]*[A-Z0-9])?)+/gi)||[]).map(x=>x.toLowerCase()))].join('\n')||'Không tìm thấy địa chỉ email.';}
-  root.ToolHubLogic={passwords,passwordConfig,convertBase,htmlEncode,extractEmails,symbols,integer};
+  function inspectIp(value){let ip=String(value).trim();if(ip.startsWith('[')&&ip.endsWith(']'))ip=ip.slice(1,-1);let version,parts;
+    if(/^\d+\.\d+\.\d+\.\d+$/.test(ip)){parts=ip.split('.').map(Number);if(parts.some((n,i)=>n>255||(ip.split('.')[i].length>1&&ip.split('.')[i][0]==='0')))throw Error('IPv4 chưa hợp lệ. Mỗi phần từ 0 đến 255, không thêm số 0 ở đầu.');version='IPv4';}
+    else if(ip.includes(':')&&/^[0-9a-f:.]+$/i.test(ip)){try{ip=new URL('http://['+ip+']/').hostname.slice(1,-1);version='IPv6';}catch{throw Error('Địa chỉ IPv6 chưa hợp lệ.');}}
+    else throw Error('Nhập địa chỉ IPv4 hoặc IPv6, ví dụ 8.8.8.8 hoặc 2606:4700:4700::1111. Không nhập URL hoặc cổng.');
+    let scope='Công khai';if(version==='IPv4'){const [a,b,c]=parts;if(a===10||a===172&&b>=16&&b<=31||a===192&&b===168)scope='Mạng riêng (private)';else if(a===127)scope='Loopback (thiết bị hiện tại)';else if(a===169&&b===254)scope='Link-local';else if(a===100&&b>=64&&b<=127)scope='Mạng chia sẻ nhà mạng (CGNAT)';else if(a===0||a>=224||a===192&&b===0&&(c===0||c===2)||a===198&&[18,19].includes(b)||a===198&&b===51&&c===100||a===203&&b===0&&c===113)scope='Dải đặc biệt hoặc dành cho tài liệu';}
+    else{if(ip==='::')scope='Chưa xác định (unspecified)';else if(ip==='::1')scope='Loopback (thiết bị hiện tại)';else if(/^f[cd]/.test(ip))scope='Mạng riêng (unique local)';else if(/^fe[89ab]/.test(ip))scope='Link-local';else if(/^ff/.test(ip))scope='Multicast';else if(/^2001:db8:/.test(ip))scope='Dành cho tài liệu';else if(/^::ffff:/.test(ip)){const h=ip.slice(7).split(':');if(h.length===2){const n=h.map(v=>parseInt(v,16));const mapped=inspectIp([n[0]>>8,n[0]&255,n[1]>>8,n[1]&255].join('.'));scope=mapped.scope;}}}
+    return {ip,version,scope,isPublic:scope==='Công khai'};
+  }
+  root.ToolHubLogic={inspectIp,passwords,passwordConfig,convertBase,htmlEncode,extractEmails,symbols,integer};
 })(globalThis);
