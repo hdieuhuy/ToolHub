@@ -1,0 +1,8 @@
+(function(root){
+const currencies={VND:'Đồng Việt Nam',USD:'Đô la Mỹ',EUR:'Euro',GBP:'Bảng Anh',JPY:'Yên Nhật',CNY:'Nhân dân tệ',KRW:'Won Hàn Quốc',SGD:'Đô la Singapore',AUD:'Đô la Úc',CAD:'Đô la Canada',CHF:'Franc Thụy Sĩ',HKD:'Đô la Hồng Kông',THB:'Baht Thái',MYR:'Ringgit Malaysia',IDR:'Rupiah Indonesia',PHP:'Peso Philippines',TWD:'Đô la Đài Loan',INR:'Rupee Ấn Độ',NZD:'Đô la New Zealand',AED:'Dirham UAE',SAR:'Riyal Saudi',BRL:'Real Brazil',MXN:'Peso Mexico',ZAR:'Rand Nam Phi',NOK:'Krone Na Uy',SEK:'Krona Thụy Điển',DKK:'Krone Đan Mạch',PLN:'Złoty Ba Lan',CZK:'Koruna Séc',HUF:'Forint Hungary',TRY:'Lira Thổ Nhĩ Kỳ',RUB:'Rúp Nga'};
+function amount(value){const text=String(value).trim();if(!/^(?:\d+(?:[.,]\d+)?|[.,]\d+)$/.test(text))throw Error('Nhập số tiền không âm, không dùng dấu phân cách hàng nghìn. Ví dụ: 1000000 hoặc 1000,50.');const n=Number(text.replace(',','.'));if(!Number.isFinite(n)||n>1e15)throw Error('Nhập số tiền không vượt quá 1.000.000.000.000.000.');return n}
+function convert(value,rate){const n=amount(value);if(!Number.isFinite(rate)||rate<=0)throw Error('Tỷ giá không hợp lệ. Hãy cập nhật và thử lại.');const result=n*rate;if(!Number.isFinite(result))throw Error('Số tiền quá lớn để quy đổi.');return result}
+const format=(n,code)=>new Intl.NumberFormat('vi-VN',{style:'currency',currency:code,currencyDisplay:'code'}).format(n);
+function formatConverted(n,code){if(n>0&&n<1)return new Intl.NumberFormat('vi-VN',{style:'currency',currency:code,currencyDisplay:'code',...(n<1e-8?{notation:'scientific',maximumSignificantDigits:8}:{maximumFractionDigits:8})}).format(n);return format(n,code)}
+root.ToolHubCurrency={currencies,amount,convert,format,formatConverted};
+})(globalThis);
