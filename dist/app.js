@@ -1,5 +1,10 @@
 const categories=['Tất cả công cụ','Lập trình','Văn bản','Bảo mật','Thiết kế','Mạng','Tài chính','Hằng ngày','Marketing'];
 const tools=[
+{id:'palette',name:'Tạo bảng màu',desc:'Phối 5 màu từ màu gốc, khóa màu yêu thích và xuất CSS / JSON.',cat:'Thiết kế',icon:'◉',tone:'#a68b56',tint:'#f7f0e1'},
+{id:'svgopt',name:'Tối ưu SVG',desc:'Thu gọn SVG tĩnh, giữ viewBox, xem trước và tải kết quả.',cat:'Thiết kế',icon:'SVG',tone:'#547a59',tint:'#edf4e9'},
+{id:'crop',name:'Cắt, xoay & lật ảnh',desc:'Kéo chọn vùng cắt, chỉnh tọa độ, xoay và lật ảnh tại máy.',cat:'Thiết kế',icon:'⌗',tone:'#56878e',tint:'#e8f2f3'},
+{id:'batchimage',name:'Chuyển ảnh hàng loạt',desc:'Chuyển PNG / JPEG / WebP, đổi kích thước và tải nhiều ảnh trong ZIP.',cat:'Thiết kế',icon:'▧',tone:'#7f8e54',tint:'#f0f3e5'},
+{id:'favicon',name:'Tạo favicon',desc:'Tạo PNG nhiều kích thước, favicon.ico, manifest và mã HTML.',cat:'Thiết kế',icon:'F',tone:'#56878e',tint:'#e8f2f3'},
 {id:'schema',name:'JSON Schema Validator',desc:'Kiểm tra JSON theo schema, chỉ rõ đường dẫn và nguyên nhân lỗi.',cat:'Lập trình',icon:'✓{}',tone:'#547a59',tint:'#edf4e9'},
 {id:'sql',name:'SQL Formatter',desc:'Định dạng SQL theo hệ cơ sở dữ liệu, từ khóa và kiểu thụt lề.',cat:'Lập trình',icon:'SQL',tone:'#56878e',tint:'#e8f2f3'},
 {id:'urlinspect',name:'Phân tích URL',desc:'Xem protocol, host, port, path, fragment và từng tham số query.',cat:'Mạng',icon:'://',tone:'#7f8e54',tint:'#f0f3e5'},
