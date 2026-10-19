@@ -12,7 +12,7 @@ const tools=[
 {id:'timestamp',name:'Unix Timestamp',desc:'Chuyển đổi thời gian Unix và ngày giờ địa phương.',cat:'Lập trình',icon:'◷',tone:'#698d88',tint:'#eaf4ef'},
 {id:'lines',name:'Xử lý dòng văn bản',desc:'Xóa dòng trùng lặp, sắp xếp và bỏ dòng trống.',cat:'Văn bản',icon:'≡',tone:'#8a7b60',tint:'#f3f0e9'},
 {id:'hash',name:'Băm SHA',desc:'Tạo mã băm SHA-256, SHA-384 và SHA-512 từ văn bản.',cat:'Bảo mật',icon:'SHA',tone:'#547a59',tint:'#edf4e9'},
-{id:'html',name:'HTML Encode / Decode',desc:'Chuyển ký tự HTML thành entity và giải mã an toàn.',cat:'Lập trình',icon:'</>',tone:'#56878e',tint:'#e8f2f3'},
+{id:'html',name:'HTML Encode / Decode',desc:'Chuyển ký tự HTML thành entity và giải mã an toàn.',cat:'Lập trình',icon:'&lt;/&gt;',tone:'#56878e',tint:'#e8f2f3'},
 {id:'radix',name:'Chuyển đổi hệ số',desc:'Đổi số nguyên giữa hệ nhị phân, thập phân, hex và hệ 2–36.',cat:'Lập trình',icon:'01',tone:'#a68b56',tint:'#f7f0e1'},
 {id:'query',name:'Tách tham số URL',desc:'Đọc query string thành danh sách hoặc JSON, giữ tham số trùng.',cat:'Lập trình',icon:'?=',tone:'#56878e',tint:'#e8f2f3'},
 {id:'lorem',name:'Tạo văn bản mẫu',desc:'Tạo đoạn văn tiếng Việt hoặc Lorem ipsum cho thiết kế.',cat:'Văn bản',icon:'¶',tone:'#b17e67',tint:'#f8eee8'},
