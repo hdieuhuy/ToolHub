@@ -1,0 +1,15 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+globalThis.crypto=require('node:crypto').webcrypto;
+vm.runInThisContext(fs.readFileSync(require('node:path').join(__dirname,'../dist/logic.js'),'utf8'));
+const logic=globalThis.ToolHubLogic;
+const defaults={length:20,count:50,upper:true,lower:true,digits:true,symbols:true,customSymbols:logic.symbols,ambiguous:true,everyGroup:true,unique:false,exclude:''};
+test('password batches respect length, selected groups, ambiguity and exclusions',()=>{for(let i=0;i<10;i++){const options={...defaults,exclude:'abcXYZ!@'};const c=logic.passwordConfig(options);const values=logic.passwords(options).split('\n');assert.equal(values.length,50);for(const value of values){assert.equal(value.length,20);assert([...value].every(x=>c.pool.includes(x)));assert(c.groups.every(group=>[...value].some(x=>group.includes(x))));assert(!/[Il1O0oabcXYZ!@'"`|]/.test(value));}}});
+test('PIN preset includes only digits and supports repeated digits',()=>{const options={...defaults,length:6,upper:false,lower:false,symbols:false,ambiguous:false};for(const value of logic.passwords(options).split('\n'))assert.match(value,/^\d{6}$/)});
+test('unique password mode has no repeated characters',()=>{const options={...defaults,length:40,unique:true};for(const value of logic.passwords(options).split('\n'))assert.equal(new Set(value).size,40)});
+test('custom symbols and optional group guarantee',()=>{const options={...defaults,length:4,customSymbols:'@#',ambiguous:false};for(const value of logic.passwords(options).split('\n')){assert.match(value,/[A-Z]/);assert.match(value,/[a-z]/);assert.match(value,/[0-9]/);assert.match(value,/[@#]/)}});
+test('rejects impossible or invalid password options promptly',()=>{for(const changes of [{upper:false,lower:false,digits:false,symbols:false},{length:3},{length:129},{count:0},{count:51},{customSymbols:'abc'},{customSymbols:''},{upper:false,lower:false,symbols:false,unique:true,length:20},{upper:false,lower:false,symbols:false,exclude:'0123456789'},{length:4.5}])assert.throws(()=>logic.passwords({...defaults,...changes}));});
+test('base conversion keeps arbitrarily large integers exact and rejects bad digits',()=>{assert.equal(logic.convertBase('9007199254740993',10,16),'20000000000001');assert.equal(logic.convertBase('-FF',16,10),'-255');assert.equal(logic.convertBase('1010',2,10),'10');assert.throws(()=>logic.convertBase('102',2,10));assert.throws(()=>logic.convertBase('12',1,10));assert.throws(()=>logic.convertBase('',10,16));});
+test('HTML escapes markup and quotes; extraction removes duplicate email addresses',()=>{assert.equal(logic.htmlEncode('<a title="A&B">\'x\'</a>'),'&lt;a title=&quot;A&amp;B&quot;&gt;&#39;x&#39;&lt;/a&gt;');assert.equal(logic.extractEmails('DEV@example.com, dev@example.com; hello@test.org.'),'dev@example.com\nhello@test.org');});
