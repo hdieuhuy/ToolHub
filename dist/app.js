@@ -1,5 +1,10 @@
 const categories=['Tất cả công cụ','Lập trình','Văn bản','Bảo mật','Thiết kế','Mạng','Tài chính','Hằng ngày','Marketing'];
 const tools=[
+{id:'pomodoro',name:'Pomodoro',desc:'Chia phiên tập trung, nghỉ ngắn và nghỉ dài với thời lượng tùy chỉnh.',cat:'Hằng ngày',icon:'◴',tone:'#a68b56',tint:'#f7f0e1'},
+{id:'countdown',name:'Đồng hồ đếm ngược',desc:'Đặt thời lượng hoặc ngày giờ đích, tạm dừng và nhận âm báo.',cat:'Hằng ngày',icon:'◷',tone:'#56878e',tint:'#e8f2f3'},
+{id:'robots',name:'Tạo robots.txt',desc:'Tạo quy tắc thu thập dữ liệu cho bot, đường dẫn và sitemap.',cat:'Marketing',icon:'BOT',tone:'#547a59',tint:'#edf4e9'},
+{id:'seopreview',name:'Xem trước SEO',desc:'Mô phỏng tiêu đề, URL và mô tả trên kết quả tìm kiếm.',cat:'Marketing',icon:'SEO',tone:'#7f8e54',tint:'#f0f3e5'},
+{id:'cleaner',name:'Text Cleaner',desc:'Làm sạch khoảng trắng, ký tự ẩn, dòng trống và chuẩn hóa Unicode.',cat:'Văn bản',icon:'Aa',tone:'#56878e',tint:'#e8f2f3'},
 {id:'yaml',name:'JSON ↔ YAML',desc:'Chuyển file cấu hình JSON và YAML, kiểm tra lỗi và tải kết quả.',cat:'Lập trình',icon:'YML',tone:'#547a59',tint:'#edf4e9'},
 {id:'cron',name:'Cron Builder',desc:'Tạo lịch cron 5 trường, chọn múi giờ và xem các lần chạy tiếp theo.',cat:'Lập trình',icon:'◷',tone:'#56878e',tint:'#e8f2f3'},
 {id:'markdown',name:'Markdown Editor',desc:'Soạn Markdown, xem trước trực tiếp và xuất HTML hoặc Markdown.',cat:'Văn bản',icon:'M↓',tone:'#7f8e54',tint:'#f0f3e5'},
