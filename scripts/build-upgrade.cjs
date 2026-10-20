@@ -1,0 +1,1 @@
+require('esbuild').buildSync({entryPoints:['src/upgrade-core.js'],outfile:'dist/upgrade-core.js',bundle:true,format:'iife',globalName:'ToolHubUpgradeCore',platform:'browser',minify:true,legalComments:'eof'});

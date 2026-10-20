@@ -1,0 +1,3 @@
+smol-toml 1.9.1 — BSD-3-Clause
+luxon 3.7.2 — MIT
+jose 6.2.12 — MIT

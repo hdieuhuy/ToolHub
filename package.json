@@ -8,7 +8,10 @@
     "ajv-formats": "3.0.1",
     "sql-formatter": "15.9.0",
     "svgo": "4.1.0",
-    "fflate": "0.8.3"
+    "fflate": "0.8.3",
+    "smol-toml": "1.9.1",
+    "luxon": "3.7.2",
+    "jose": "6.2.12"
   },
   "name": "toolhub",
   "private": true,
@@ -16,7 +19,9 @@
     "build:next": "node scripts/build-next.cjs",
     "test": "node --test tests/*.test.cjs",
     "build:network": "node scripts/build-network.cjs",
-    "build:design": "node scripts/build-design.cjs"
+    "build:design": "node scripts/build-design.cjs",
+    "build:upgrade": "node scripts/build-upgrade.cjs",
+    "build": "npm run build:next && npm run build:network && npm run build:design && npm run build:upgrade"
   },
   "devDependencies": {
     "esbuild": "0.28.2"

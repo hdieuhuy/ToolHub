@@ -7,7 +7,7 @@ ToolHub là website tập hợp các công cụ nhỏ phục vụ lập trình, 
 Phần lớn thao tác được xử lý ngay trong trình duyệt. Người dùng có thể nhập nội dung, mở file tại máy, xem trước, sao chép hoặc tải kết quả mà không cần backend xử lý dữ liệu riêng của ứng dụng.
 
 - **Website đã triển khai:** [Mở ToolHub](https://toolhub-workbench-huy.funlemon1.chatgpt.site/).
-- **Hiện trạng tài liệu:** ngày 19/10/2026 — **52 công cụ**, 8 nhóm, **69 bài kiểm thử tự động**.
+- **Hiện trạng tài liệu:** ngày 20/10/2026 — **53 công cụ**, 8 nhóm, **78 bài kiểm thử tự động**.
 - **Kiến trúc:** website tĩnh dùng HTML, CSS và JavaScript; một số bộ xử lý được đóng gói bằng esbuild.
 - **Thư mục xuất bản:** `dist/`.
 
@@ -16,7 +16,7 @@ Phần lớn thao tác được xử lý ngay trong trình duyệt. Người dù
 ## Mục lục
 
 1. [Tổng quan và nguyên tắc](#1-tổng-quan-và-nguyên-tắc)
-2. [Danh sách 52 công cụ](#2-danh-sách-52-công-cụ)
+2. [Danh sách 53 công cụ](#2-danh-sách-53-công-cụ)
 3. [Chạy dự án tại máy](#3-chạy-dự-án-tại-máy)
 4. [Cấu trúc mã nguồn](#4-cấu-trúc-mã-nguồn)
 5. [Build và quản lý thư viện](#5-build-và-quản-lý-thư-viện)
@@ -49,7 +49,7 @@ Phần lớn thao tác được xử lý ngay trong trình duyệt. Người dù
 - Thao tác nặng như regex, schema, SQL và tối ưu SVG chạy trong Web Worker, có giới hạn thời gian.
 - Không có database, API backend, hệ thống thanh toán hoặc bộ lập lịch chạy trên máy chủ trong mã nguồn hiện tại.
 
-## 2. Danh sách 52 công cụ
+## 2. Danh sách 53 công cụ
 
 Danh sách dưới đây bám theo registry `tools` trong [`dist/app.js`](dist/app.js). ID là khóa nội bộ phục vụ mở công cụ, yêu thích và lịch sử sử dụng.
 
@@ -59,18 +59,18 @@ Danh sách dưới đây bám theo registry `tools` trong [`dist/app.js`](dist/a
 | --- | --- | --- |
 | `schema` | JSON Schema Validator | Kiểm tra JSON theo schema, chỉ rõ đường dẫn và nguyên nhân lỗi. |
 | `sql` | SQL Formatter | Định dạng SQL theo hệ cơ sở dữ liệu, từ khóa và kiểu thụt lề. |
-| `yaml` | JSON ↔ YAML | Chuyển file cấu hình JSON và YAML, kiểm tra lỗi và tải kết quả. |
+| `yaml` | JSON ↔ YAML ↔ TOML | Chuyển file cấu hình JSON và YAML, kiểm tra lỗi và tải kết quả. |
 | `cron` | Cron Builder | Tạo lịch cron 5 trường, chọn múi giờ và xem các lần chạy tiếp theo. |
 | `diff` | So sánh văn bản / JSON | Tìm dòng thêm, xóa và so sánh JSON bỏ qua thứ tự khóa. |
 | `csv` | CSV ↔ JSON | Đổi dữ liệu bảng, chọn dấu phân cách và mở file tại máy. |
 | `regex` | Regex Tester | Thử biểu thức, đánh dấu phần khớp và xem nhóm bắt. |
 | `fakejson` | Tạo dữ liệu giả JSON | Tạo dữ liệu thử nghiệm theo schema, số lượng và mẫu có sẵn. |
-| `jwt` | JWT Debugger | Giải mã token, kiểm tra thời hạn và xác minh chữ ký HMAC tại máy. |
+| `jwt` | JWT Debugger | Đọc JWS/JWE, xác minh HMAC/RSA/ECDSA và giải mã JWE tại máy. |
 | `json` | JSON Formatter | Định dạng, thu gọn và kiểm tra dữ liệu JSON. |
 | `base64` | Base64 Encode / Decode | Mã hóa và giải mã Base64, hỗ trợ tiếng Việt. |
 | `url` | URL Encode / Decode | Chuyển đổi ký tự đặc biệt trong đường dẫn URL. |
 | `uuid` | UUID Generator | Tạo UUID v4 ngẫu nhiên cho ứng dụng của bạn. |
-| `timestamp` | Unix Timestamp | Chuyển đổi thời gian Unix và ngày giờ địa phương. |
+| `timestamp` | Unix Timestamp | Chuyển Unix giây/ms, múi giờ IANA và tính chênh lệch hai thời điểm. |
 | `html` | HTML Encode / Decode | Chuyển ký tự HTML thành entity và giải mã an toàn. |
 | `radix` | Chuyển đổi hệ số | Đổi số nguyên giữa hệ nhị phân, thập phân, hex và hệ 2–36. |
 | `query` | Tách tham số URL | Đọc query string thành danh sách hoặc JSON, giữ tham số trùng. |
@@ -103,7 +103,7 @@ Danh sách dưới đây bám theo registry `tools` trong [`dist/app.js`](dist/a
 | ID | Công cụ | Chức năng |
 | --- | --- | --- |
 | `palette` | Tạo bảng màu | Phối 5 màu từ màu gốc, khóa màu yêu thích và xuất CSS / JSON. |
-| `svgopt` | Tối ưu SVG | Thu gọn SVG tĩnh, giữ viewBox, xem trước và tải kết quả. |
+| `svgopt` | Tối ưu SVG | Thu gọn SVG với CSS và animation cơ bản đã kiểm tra an toàn. |
 | `crop` | Cắt, xoay & lật ảnh | Kéo chọn vùng cắt, chỉnh tọa độ, xoay và lật ảnh tại máy. |
 | `batchimage` | Chuyển ảnh hàng loạt | Chuyển PNG / JPEG / WebP, đổi kích thước và tải nhiều ảnh trong ZIP. |
 | `favicon` | Tạo favicon | Tạo PNG nhiều kích thước, favicon.ico, manifest và mã HTML. |
@@ -117,7 +117,8 @@ Danh sách dưới đây bám theo registry `tools` trong [`dist/app.js`](dist/a
 | ID | Công cụ | Chức năng |
 | --- | --- | --- |
 | `urlinspect` | Phân tích URL | Xem protocol, host, port, path, fragment và từng tham số query. |
-| `subnet` | Subnet Calculator IPv4 | Tính mạng CIDR, subnet mask, broadcast và dải địa chỉ host. |
+| `dns` | Tra cứu DNS | A, AAAA, MX, TXT, CNAME, NS, SOA, CAA qua Google DoH. |
+| `subnet` | Subnet Calculator IPv4 / IPv6 | Tính mạng CIDR, subnet mask, broadcast và dải địa chỉ host. |
 | `ip` | IP của tôi & tra cứu IP | Xem IP công khai, nhà mạng, ASN, múi giờ và vị trí ước tính. |
 
 ### Tài chính — 1 công cụ
@@ -189,6 +190,8 @@ npm test
 | `npm test` | Chạy toàn bộ `tests/*.test.cjs` bằng Node test runner |
 | `npm run build:next` | Build YAML, Markdown, cron, tương phản và CSS core |
 | `npm run build:network` | Build schema, SQL, phân tích URL, subnet và trích xuất URL core |
+| `npm run build` | Build toàn bộ 4 bundle, dùng làm Build Command trên Vercel |
+| `npm run build:upgrade` | Build TOML, múi giờ, IPv6 và JWT/JWE core |
 | `npm run build:design` | Build màu, SVGO, hình học ảnh, ICO và ZIP core |
 
 Hiện chưa có script `dev`, `start`, `build`, `lint` hoặc CI workflow được cung cấp trong repository. Dùng các lệnh cụ thể ở trên thay vì giả định có `npm run dev`.
@@ -250,7 +253,7 @@ toolhub/
 | HTML, CSS, `app.js`, các `*-ui.js`, worker và module còn lại | File tương ứng trong `dist/` | Kiểm tra cú pháp, test và thử trên trình duyệt |
 | QR / DOMPurify đã vendored | `dist/vendor/` | Cập nhật có kiểm soát, giữ license và kiểm tra hồi quy |
 
-Không sửa thủ công ba bundle core sinh tự động: thay đổi sẽ mất khi build lại.
+Không sửa thủ công bốn bundle core sinh tự động: thay đổi sẽ mất khi build lại.
 
 ### 4.2. Luồng hoạt động
 
@@ -258,7 +261,7 @@ Không sửa thủ công ba bundle core sinh tự động: thay đổi sẽ mấ
 2. `app.js` dựng danh mục từ registry, xử lý lọc, tìm kiếm, yêu thích và mở dialog.
 3. Công cụ cơ bản dùng form/kết quả chung; công cụ chuyên biệt dùng `ToolHubAdvanced`.
 4. `ToolHubAdvanced.open()` tạo pane khi cần và giữ DOM của pane trong phiên hiện tại.
-5. Factory trong `next-ui.js`, `daily-ui.js`, `network-ui.js`, `design-ui.js` quản lý tương tác từng nhóm.
+5. Factory trong `next-ui.js`, `daily-ui.js`, `network-ui.js`, `design-ui.js`, `upgrade-ui.js` quản lý tương tác từng nhóm.
 6. Logic core xử lý dữ liệu; worker chạy các tác vụ dễ làm treo luồng giao diện.
 7. Kết quả được render, sao chép hoặc tải bằng `Blob` và object URL.
 
@@ -266,18 +269,16 @@ Các module trình duyệt được chia sẻ qua các global `ToolHub*`; đây 
 
 ## 5. Build và quản lý thư viện
 
-### 5.1. Build toàn bộ ba bundle
+### 5.1. Build toàn bộ bốn bundle
 
 Sau `npm ci`, chạy lần lượt:
 
 ```bash
-npm run build:next
-npm run build:network
-npm run build:design
+npm run build
 npm test
 ```
 
-Các script chỉ tạo lại ba file `dist/*-core.js` tương ứng. Chúng **không** tự tạo lại HTML, CSS, UI, worker, QR vendor, bản sao DOMPurify hoặc các file NOTICE/LICENSE.
+Các script chỉ tạo lại bốn file `dist/*-core.js` tương ứng. Chúng **không** tự tạo lại HTML, CSS, UI, worker, QR vendor, bản sao DOMPurify hoặc các file NOTICE/LICENSE.
 
 ### 5.2. Thư viện chính
 
@@ -332,7 +333,7 @@ Phím tắt hiện có:
 
 **Kiểm tra JSON API:** mở JSON Formatter để định dạng → dùng JSON Schema Validator kiểm tra cấu trúc → dùng So sánh văn bản / JSON đối chiếu hai phiên bản. Tạo dữ liệu giả JSON là công cụ riêng, dùng schema phẳng dạng tên trường → loại dữ liệu; không phải trình sinh dữ liệu theo JSON Schema tiêu chuẩn.
 
-**Chuẩn bị ảnh cho website:** dùng Cắt, xoay & lật ảnh chọn vùng cần thiết → dùng Nén & đổi kích thước ảnh hoặc Chuyển ảnh hàng loạt để xuất → dùng Tạo favicon nếu cần bộ biểu tượng. Tải file từ công cụ trước rồi mở ở công cụ tiếp theo; chưa có pipeline tự động chuyển ảnh giữa mọi công cụ.
+**Chuẩn bị ảnh cho website:** dùng Cắt, xoay & lật ảnh chọn vùng cần thiết → dùng Nén & đổi kích thước ảnh hoặc Chuyển ảnh hàng loạt để xuất → dùng Tạo favicon nếu cần bộ biểu tượng. Dùng các nút “Chuyển kết quả sang” để chuyển trực tiếp ảnh đã xử lý giữa nén ảnh, cắt ảnh, chuyển ảnh hàng loạt và favicon; không cần tải xuống rồi chọn lại. Favicon chuyển PNG 512 px; ảnh hàng loạt chuyển từng kết quả.
 
 **Chuẩn bị nội dung marketing:** tạo UTM cho liên kết → tạo QR từ URL → dùng Tạo Meta Tag và Xem trước SEO để chuẩn bị thông tin trang. Các công cụ này tạo nội dung, không tự chỉnh HTML của website đích hoặc gửi chiến dịch.
 
@@ -346,17 +347,19 @@ Phím tắt hiện có:
 | --- | --- | --- |
 | ID công cụ yêu thích | `localStorage`, khóa `toolhub-favorites` | Thường vẫn còn, tùy chế độ lưu trữ của trình duyệt |
 | ID công cụ dùng gần đây | `localStorage`, khóa `toolhub-recent` | Thường vẫn còn |
-| Nội dung nhập, bản nháp, file đã chọn, ảnh kết quả, phiên timer | Bộ nhớ JavaScript / DOM của trang | Mất |
+| Nội dung nhập, bản nháp, file đã chọn, ảnh kết quả | Bộ nhớ JavaScript / DOM của trang | Mất |
+| Phiên Pomodoro / đếm ngược | `localStorage`: `toolhub-timer-pomodoro-v1`, `toolhub-timer-countdown-v1` và khóa hậu tố `-enabled` | Khôi phục khi bật Tự lưu (mặc định); tắt tùy chọn để xóa phiên lưu |
 | Cache tỷ giá | Bộ nhớ trang, thời gian sử dụng lại tối đa 10 phút | Mất |
 | File người dùng đã tải xuống | Thư mục tải xuống do trình duyệt quản lý | Vẫn là file trên máy, không bị nút Xóa trong công cụ xóa đi |
 
-Khóa HMAC/JWT không được đưa vào snapshot bản nháp của form chung. Không có cơ chế đồng bộ nội dung người dùng lên tài khoản hoặc database trong ứng dụng hiện tại.
+Khóa JWT/JWE chỉ ở bộ nhớ, được xóa khi đóng hoặc chuyển công cụ; không được lưu vào localStorage. Không có cơ chế đồng bộ nội dung người dùng lên tài khoản hoặc database trong ứng dụng hiện tại.
 
 ### 7.2. Kết nối bên ngoài có trong mã nguồn
 
 | Thành phần | Kết nối | Dữ liệu / lưu ý |
 | --- | --- | --- |
 | Tra cứu IP | `https://api.ip.sb/geoip` hoặc `/geoip/{ip}` | Dịch vụ nhận IP cần tra cứu và thông tin kết nối; vị trí chỉ là ước tính |
+| Tra cứu DNS | `https://dns.google/resolve` | Gửi tên miền và loại bản ghi khi nhấn nút; kết quả từ Google Public DNS, không đại diện DNS nội bộ |
 | Tiền tệ | `https://api.frankfurter.dev/v2/rate/{from}/{to}` | Gửi cặp mã tiền tệ; số tiền được tính trong trình duyệt |
 | Font giao diện | Google Fonts qua CSS trong `style.css` | Có thể tải CSS và font từ Google; mất mạng có font fallback |
 | Logo chữ ký email | URL HTTPS do người dùng nhập | Bản xem trước chữ ký có thể tải ảnh từ URL đó; iframe có sandbox và CSP riêng |
@@ -364,12 +367,12 @@ Khóa HMAC/JWT không được đưa vào snapshot bản nháp của form chung.
 
 Các thư viện QR, bộ xử lý và DOMPurify được phân phối cùng tài nguyên website; không tải từ CDN thư viện lúc sử dụng. Mã nguồn hiện không tích hợp analytics riêng, quảng cáo hoặc tài khoản người dùng của ứng dụng.
 
-**Không mô tả ToolHub là “hoàn toàn offline”.** Phần lớn công cụ không cần dịch vụ xử lý từ xa sau khi tài nguyên đã tải, nhưng IP, tỷ giá, font và logo có các ngoại lệ phía trên. Dự án chưa có service worker để bảo đảm hoạt động offline khi mở mới trang.
+**Không mô tả ToolHub là “hoàn toàn offline”.** Phần lớn công cụ không cần dịch vụ xử lý từ xa sau khi tài nguyên đã tải, nhưng IP, DNS, tỷ giá, font và logo có các ngoại lệ phía trên. Dự án chưa có service worker để bảo đảm hoạt động offline khi mở mới trang.
 
 ### 7.3. Các biện pháp xử lý nội dung
 
 - Markdown được parse rồi làm sạch bằng DOMPurify; ảnh và nội dung nhúng bị tắt trong preview hiện tại.
-- SVG được làm sạch trước khi tối ưu và kiểm tra lại trước khi hiển thị/xuất; script, ảnh nhúng, animation, thẻ style và tham chiếu ngoài bị loại bỏ.
+- SVG được làm sạch trước khi tối ưu và kiểm tra lại trước khi hiển thị/xuất; script, ảnh nhúng, sự kiện và tham chiếu ngoài bị loại bỏ. CSS đơn giản được chuyển thành thuộc tính theo danh sách cho phép; animation số/màu/transform cơ bản được dựng lại từ thuộc tính đã kiểm tra. CSS nâng cao và animation không được hỗ trợ có thể bị loại.
 - Giá trị người dùng trong các bảng kết quả được gán qua `textContent` thay vì chèn HTML tùy ý.
 - Regex, schema, SQL, YAML/cron và SVG có worker/timeout để giảm nguy cơ treo giao diện.
 - URL đọc từ QR không được tự mở; các công cụ phân tích/trích xuất URL không tự truy cập liên kết.
@@ -386,29 +389,29 @@ Các giới hạn dưới đây phản ánh mã nguồn hiện tại. `MB` ở c
 | So sánh văn bản / JSON | Tổng đầu vào 400.000 ký tự; tối đa 2.000 dòng mỗi bên sau xử lý; JSON có tùy chọn bỏ qua thứ tự khóa, vẫn giữ thứ tự mảng |
 | CSV ↔ JSON | Đầu vào tối đa 2.000.000 ký tự; CSV mở file tối đa 2 MB; tối đa 20.000 bản ghi và 200 cột; header không trống/trùng |
 | Nhận diện kiểu CSV | Mặc định giữ chuỗi; tùy chọn nhận diện số/bool/null; số nguyên vượt độ chính xác an toàn được giữ dạng chuỗi |
-| JSON ↔ YAML | 200.000 ký tự đầu vào; kết quả tối đa 2.000.000 ký tự; không giữ comment, không nhận nhiều tài liệu YAML trong một file |
+| JSON ↔ YAML ↔ TOML | 200.000 ký tự đầu vào; kết quả tối đa 2.000.000 ký tự; không giữ comment; có tùy chọn YAML nhiều tài liệu thành mảng; TOML cần đối tượng gốc không có null; ngày TOML xuất chuỗi |
 | Regex Tester | Pattern tối đa 5.000 ký tự; văn bản 100.000 ký tự; tối đa 500 phần khớp, có giới hạn độ dài kết quả; worker dừng sau 1,5 giây |
 | JSON Schema | Schema 100.000 ký tự, dữ liệu 300.000 ký tự; draft-07 hoặc 2020-12; tối đa 100 lỗi hiển thị; không ép kiểu hay thêm default |
 | SQL Formatter | 100.000 ký tự; 7 lựa chọn dialect; chỉ định dạng, không thực thi hoặc xác nhận nghiệp vụ; stored procedure không được hỗ trợ đầy đủ |
 | Worker YAML/cron, schema/SQL, SVG | Dừng sau 3 giây; chuyển công cụ cũng hủy tác vụ đang xử lý |
 | Cron Builder | Cron 5 trường, hỗ trợ số, `*`, danh sách, khoảng và bước; không chạy job; tính tối đa 10 lần tiếp theo trong phạm vi 50 năm |
-| QR | Nội dung tối đa 2.000 byte UTF-8; dung lượng thực tế còn tùy mức sửa lỗi; tạo PNG 256/512/1024 px hoặc SVG; đọc một mã rõ nét từ file ảnh |
+| QR | Nội dung tối đa 2.000 byte UTF-8; dung lượng thực tế còn tùy mức sửa lỗi; tạo PNG 256/512/1024 px hoặc SVG; đọc tối đa 20 nội dung khác nhau từ ảnh, quét camera khi người dùng cấp quyền; ảnh được đọc trong worker với timeout 15 giây; không đảm bảo đọc mã mờ, chồng hoặc quá nhỏ |
 | Ảnh raster đầu vào | PNG/JPEG/WebP, tối đa 20 MB/ảnh, 32 megapixel, cạnh dài nhất 16.000 px |
 | Nén / đổi kích thước ảnh | Kích thước đích 1–12.000 px mỗi cạnh, tối đa 32 megapixel; có tùy chọn phóng to; PNG không dùng tùy chọn chất lượng lossy |
 | Cắt / xoay / lật | Vùng cắt phải nằm trong ảnh; góc 0/90/180/270°; lật trước khi xoay; JPEG nền trắng |
 | Ảnh hàng loạt | Tối đa 20 file, tổng nguồn 60 MB, kết quả 80 MB; cạnh đích 1–8.000 px khi thu nhỏ; không phóng to |
 | Ảnh xuất | Ảnh tĩnh, không giữ metadata; có thể lớn hơn file gốc; một số trình duyệt có thể trả định dạng dự phòng, phần mở rộng theo MIME thực tế |
-| SVG Optimizer | 300.000 ký tự; độ chính xác 1–5 chữ số; chỉ SVG tĩnh; SVG dựa vào style/ảnh/animation bị loại có thể thay đổi hình thức |
+| SVG Optimizer | 300.000 ký tự; độ chính xác 1–5 chữ số; hỗ trợ CSS selector đơn giản và animation cơ bản; không đảm bảo bảo toàn CSS cascade/phức tạp hoặc SMIL nâng cao, cần đối chiếu hình gốc |
 | Favicon | 6 PNG: 16/32/48/180/192/512 px; ICO chứa 16/32/48 px; thêm manifest và HTML; tổng 9 file |
 | Text Cleaner | 500.000 ký tự; chọn từng phép biến đổi; chuẩn hóa LF; giữ ZWJ/ZWNJ để không phá emoji ghép |
 | Trích xuất URL | 500.000 ký tự, tối đa 5.000 ứng viên URL; chỉ HTTP/HTTPS; loại dấu câu là heuristic, cần kiểm tra URL đặc biệt |
 | Phân tích URL | 20.000 ký tự; HTTP/HTTPS; giữ query trùng; mật khẩu trong phần authority được ẩn trong báo cáo |
-| Subnet | Chỉ IPv4; hỗ trợ prefix /0–/32 và netmask liên tục; /31 theo quy ước point-to-point, /32 là một host |
+| Subnet | IPv4 /0–/32, netmask liên tục, /31 point-to-point, /32 một host; IPv6 /0–/128 dùng BigInt, số địa chỉ chính xác; IPv6 không có broadcast, không trừ địa chỉ reserved theo triển khai |
 | Số ngẫu nhiên | 1–1.000 kết quả; 0–6 chữ số thập phân; có lọc trùng và sắp xếp; khoảng bao gồm cả hai đầu |
 | Fake JSON | 1–1.000 bản ghi, schema phẳng tối đa 30 trường; dữ liệu ví dụ, không bảo đảm giống một hệ thống dữ liệu thực |
-| JWT | Giải mã JWS 3 phần; xác minh HMAC HS256/384/512; không hỗ trợ JWE 5 phần; decode không chứng minh chữ ký hợp lệ |
+| JWT | JWS: HS/RS/PS/ES 256/384/512 (ES512 dùng P-521); PEM SPKI hoặc JWK để xác minh. JWE Compact: dir, RSA-OAEP, RSA-OAEP-256, ECDH-ES với A128/192/256GCM; khóa Base64URL, PKCS8 hoặc JWK tùy thuật toán. Decode không xác minh; JWE giải mã không tự xác minh JWT ký lồng |
 | Hash | MD5, SHA-1/256/384/512; HMAC cho nhóm SHA; không phải hệ thống lưu mật khẩu; giới hạn văn bản 1 triệu ký tự |
-| Pomodoro / đếm ngược | Phải giữ trang mở; tiếp tục khi chuyển công cụ; tải lại/đóng trang mất phiên; âm báo có thể trễ khi tab nền hoặc thiết bị ngủ |
+| Pomodoro / đếm ngược | Tiếp tục khi chuyển công cụ; tự lưu deadline và trạng thái khi bật tùy chọn, khôi phục sau reload/mở lại trên cùng origin và trình duyệt. Trang đóng không phát âm báo; tab nền/thiết bị ngủ có thể báo trễ. Không đồng bộ nhiều tab |
 | SEO Preview | Mô phỏng, không cam kết giống kết quả Google; số ký tự không phải ngưỡng xếp hạng hay giới hạn cứng |
 | robots.txt | Chỉ sinh file; không tự triển khai, không bảo vệ nội dung riêng tư và không bảo đảm loại URL khỏi kết quả tìm kiếm |
 | Tỷ giá | Tham khảo theo ngày nguồn cung cấp, có thể là ngày làm việc gần nhất; chưa gồm phí và không phải giá mua/bán ngân hàng |
@@ -430,7 +433,7 @@ node --test tests/network.test.cjs
 node --test tests/design.test.cjs
 ```
 
-Mốc hiện tại: **69 test trong 10 file**, dùng `node:test` và `assert`. Một số bộ test nạp bundle trình duyệt qua VM để kiểm tra chính file đã build.
+Mốc hiện tại: **78 test trong 11 file**, dùng `node:test` và `assert`. Một số bộ test nạp bundle trình duyệt qua VM để kiểm tra chính file đã build.
 
 | File test | Phạm vi chính |
 | --- | --- |
@@ -438,6 +441,7 @@ Mốc hiện tại: **69 test trong 10 file**, dùng `node:test` và `assert`. M
 | `signature.test.cjs` | Template chữ ký, escape, URL và cấu hình |
 | `currency.test.cjs` | Nhập số tiền, tính và định dạng kết quả |
 | `random-time.test.cjs` | Số ngẫu nhiên, khoảng thập phân, stopwatch |
+| `upgrade.test.cjs` | TOML, YAML nhiều tài liệu, DST, IPv6, DNS, chữ ký RSA/ECDSA độc lập và JWE AES-GCM |
 | `dev-tools.test.cjs` | Hash, HMAC, JWT, meta tag, UTM và fake JSON |
 | `advanced.test.cjs` | Diff, CSV, regex, QR round-trip và kích thước ảnh |
 | `next.test.cjs` | YAML, cron/DST/ngày nhuận, Markdown, tương phản và CSS |
@@ -562,7 +566,7 @@ Về mặt ứng dụng, có thể phục vụ nội dung `dist/` bằng một s
 | Schema báo lỗi `$ref` hoặc draft | Chọn đúng draft, dùng tham chiếu nội bộ `#`; remote reference không được tải |
 | Regex/schema bị dừng | Giảm độ phức tạp hoặc kích thước đầu vào; không tăng timeout vô hạn để che tác vụ có thể treo |
 | Ảnh xuất lớn hơn file nguồn | Đây là khả năng bình thường; đổi định dạng, giảm kích thước/chất lượng nếu phù hợp |
-| SVG sau tối ưu khác hình gốc | Kiểm tra việc loại style, ảnh nhúng, animation và tham chiếu ngoài; công cụ hiện chỉ dành cho SVG tĩnh |
+| SVG sau tối ưu khác hình gốc | Kiểm tra việc loại style, ảnh nhúng, animation và tham chiếu ngoài; chỉ hỗ trợ một tập CSS và animation an toàn, nên đối chiếu với bản gốc |
 | Âm báo timer không phát / đến muộn | Âm thanh cần tương tác người dùng; kiểm tra tab, chế độ ngủ và chính sách âm thanh trình duyệt |
 | Mất dữ liệu sau refresh | Đây là hành vi hiện tại: bản nháp và file chỉ ở bộ nhớ; tải kết quả cần giữ trước khi refresh |
 | Chữ ký email khác bản xem trước | Mỗi email client hỗ trợ HTML khác nhau; thử gửi email kiểm tra và dùng cách dán chữ ký có định dạng |
@@ -602,3 +606,14 @@ Các thư viện bên thứ ba có giấy phép riêng. Xem `dist/vendor/`, đ�
 - Các file `*-LICENSE.txt` đi kèm.
 
 Nguồn dịch vụ và tài liệu được giao diện tham chiếu gồm [IP.SB](https://ip.sb/), [Frankfurter](https://frankfurter.dev/), [WCAG](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) và [Google Search Central](https://developers.google.com/search/docs). Việc ToolHub gọi hoặc tham khảo các nguồn này không có nghĩa các tổ chức đó bảo trợ dự án.
+
+### Các thao tác mới (20/10/2026)
+
+- **Cấu hình:** chọn định dạng nguồn/đích, nhập dữ liệu rồi Chuyển đổi. Bật tùy chọn nhiều tài liệu trước khi đọc YAML có `---`; kết quả JSON là mảng. TOML không biểu diễn được `null`, nên công cụ báo lỗi thay vì âm thầm bỏ dữ liệu.
+- **Timestamp / múi giờ:** nhập ISO local `2026-10-20T09:00:00`, chọn múi giờ nguồn và đối chiếu. Giờ không tồn tại khi chuyển DST bị từ chối; giờ lặp có lựa chọn lần sớm/muộn. Chênh lệch B−A là thời lượng thực; một ngày bằng 24 giờ, không phải số ngày lịch.
+- **JWT/JWE:** chọn thuật toán mong đợi, nhập khóa phù hợp rồi xác minh hoặc giải mã. Không tự tin thuật toán/khóa từ token; không tự tải JWKS. `exp`/`nbf` được kiểm tra nếu tồn tại; `iss`/`aud` chỉ kiểm tra khi nhập kỳ vọng. Worker dừng sau 5 giây.
+- **QR camera:** cần HTTPS (hoặc localhost), camera và quyền trình duyệt. Nhấn Quét bằng camera để bật, Dừng camera để tắt; đóng/chuyển công cụ cũng dừng các track. Không có ảnh/video nào được tải lên. Chưa kiểm chứng với camera vật lý trong đợt kiểm thử này.
+- **DNS:** chỉ truy vấn khi nhấn nút, có timeout 12 giây và hủy khi đổi đầu vào/chuyển công cụ; NXDOMAIN được thông báo riêng.
+- **Khôi phục timer:** trạng thái lưu theo origin, vì vậy dữ liệu từ localhost, Sites và Vercel không dùng chung. Chế độ riêng tư hoặc chặn storage có thể làm tính năng lưu không hoạt động.
+
+Thư viện mới: `smol-toml` 1.9.1, `luxon` 3.7.2, `jose` 6.2.12; giấy phép nằm trong `dist/vendor/`. Mã nguồn ở `src/upgrade-core.js`, giao diện `dist/upgrade-ui.js`; bundle được tạo bằng `npm run build:upgrade`.
